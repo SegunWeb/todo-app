@@ -1,11 +1,32 @@
-import React from "react";
-import Status from '../item-status-filter/Status'
-const Search = () => {
-    return (
-        <div className="d-flex">
-            <input type="search" placeholder="search"/>
-            <Status/>
-        </div>
-    )
-};
+import React, {Component} from "react";
+
+class Search extends Component {
+
+    state = {
+        term: ''
+    };
+
+    onSearchChange = (e) => {
+        const term = e.target.value;
+        this.setState({
+            term
+        });
+        this.props.onSearchChange(term)
+    };
+
+    render() {
+        const {term} = this.state;
+
+        return (
+            <div className="d-flex">
+                <input
+                    type="search"
+                    placeholder="search"
+                    value={term}
+                    onChange={this.onSearchChange}
+                />
+            </div>
+        )
+    }
+}
 export default Search;

@@ -1,14 +1,42 @@
-import React from "react";
+import React, {Component} from "react";
 
-const ItemAdd = ({onAddItem}) => {
-    return (
-        <div className='btn-group'>
-            <button type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => onAddItem("hello")}
-            >add item</button>
-        </div>
-    )
-};
+class ItemAdd extends Component {
+
+    state = {
+        label: '',
+    };
+
+    onLabelChange = (e) => {
+        this.setState( {
+            label: e.target.value
+        });
+    };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.onAddItem(this.state.label);
+        this.setState({
+            label: '',
+        })
+    };
+
+     render(){
+        return (
+            <form className='add-item d-flex'
+                  onSubmit={this.onSubmit}
+            >
+                <input type="text"
+                   placeholder="add text"
+                   className='form-control'
+                   onChange={this.onLabelChange}
+                   value={this.state.label}
+                />
+                <button type="submit"
+                        className="btn btn-outline-secondary"
+                >add item</button>
+            </form>
+        )
+     }
+}
 
 export default ItemAdd
