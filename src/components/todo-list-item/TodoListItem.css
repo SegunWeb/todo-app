@@ -1,0 +1,16 @@
+.wrap-todo-list-item {
+    padding: 5px;
+    display: flex;
+}
+
+.todo-list-item {
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.important {
+    font-weight: bold;
+    color: tomato;
+}
+.done {
+    text-decoration: line-through;
+}
